@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Leaflet Heatmap Demo</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+
+  <style>
+    #map {
+      height: 100vh;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <script>
+    var map = L.map('map').setView([28.6139, 77.2090], 5);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+    const heatData = [
+    // Delhi NCR
+    [28.7041, 77.1025, 10],
+    [28.5355, 77.3910, 12],
+    [28.4595, 77.0266, 9],
+
+    // Mumbai Region
+    [19.0760, 72.8777, 15],
+    [19.2183, 72.9781, 18],
+    [19.0330, 73.0297, 20],
+
+    // Bengaluru
+    [12.9716, 77.5946, 10],
+    [12.9141, 77.6387, 12],
+    [13.0827, 77.5970, 9],
+
+    // Chennai
+    [13.0827, 80.2707, 8],
+    [12.9719, 80.2478, 7],
+    [13.0033, 80.2519, 10],
+
+    // Kolkata
+    [22.5726, 88.3639, 15],
+    [22.5958, 88.2636, 12],
+    [22.4916, 88.3669, 14],
+
+    // Hyderabad
+    [17.3850, 78.4867, 10],
+    [17.4375, 78.4483, 11],
+    [17.4156, 78.4316, 13],
+
+    // Pune
+    [18.5204, 73.8567, 14],
+    [18.6515, 73.7880, 13],
+    [18.6298, 73.7997, 12],
+
+    // Ahmedabad
+    [23.0225, 72.5714, 10],
+    [23.2156, 72.6369, 12],
+    [22.9999, 72.6000, 9],
+
+    // Jaipur
+    [26.9124, 75.7873, 8],
+    [26.8500, 75.8000, 10],
+    [26.9000, 75.7500, 9],
+
+    // Lucknow
+    [26.8467, 80.9462, 7],
+    [26.8700, 80.9200, 8],
+    [26.8500, 80.9700, 9],
+
+    // Patna
+    [25.5941, 85.1376, 6],
+    [25.6200, 85.1200, 7],
+    [25.5800, 85.1600, 8]
+    ];
+    L.heatLayer(heatData, {
+      radius: 25,
+      blur: 15,
+      maxZoom: 10,
+    }).addTo(map);
+  </script>
+</body>
+</html>
